@@ -1,0 +1,67 @@
+<!-- templates/login_backup.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="login-container">
+    <!-- LEFT: Welcome -->
+    <div class="left-panel">
+        <h1>Welcome Back :)</h1>
+        <button class="skip-btn">Made with ⚙️ by Hyphen01</button>
+    </div>
+
+    <!-- RIGHT: Login Form -->
+    <div class="right-panel">
+        <div class="login-card">
+            <h2>Login</h2>
+            <p>Glad you're back!</p>
+            <div th:if="${param.error}" class="error">Invalid username or password</div>
+            <div th:if="${param.logout}" class="success">You have been logged out</div>
+            <div th:if="${param.signupSuccess}" class="success">Signup successful! Please login.</div>
+            <div th:if="${loginError}" class="error" th:text="${loginError}"></div>
+
+
+            <form th:action="@{/login}" method="post">
+                <label>Username</label>
+                <input type="text" name="username" required />
+
+                <label>Password</label>
+                <input type="password" name="password" required />
+
+                <div class="options">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button class="login-btn" type="submit">Login</button>
+                <p>Don't have an account? <a th:href="@{/signup}">Signup</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // Wait for the DOM to load
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select the success message
+        const signupSuccess = document.querySelector('.success');
+
+        if (signupSuccess) {
+            // Set timeout to hide after 4 seconds (4000ms)
+            setTimeout(() => {
+                signupSuccess.style.transition = "opacity 0.8s ease";
+                signupSuccess.style.opacity = 0;
+
+                // Optionally remove it from DOM after fading
+                setTimeout(() => {
+                    signupSuccess.style.display = "none";
+                }, 800);
+            }, 4000);
+        }
+    });
+</script>
+
+</body>
+</html>
