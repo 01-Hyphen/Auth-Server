@@ -34,7 +34,7 @@ public class AuthServiceImpl {
 
 
 
-    public void createUser(UserObjDto userObjDto){
+    public UserObj createUser(UserObjDto userObjDto){
         Optional<UserObj> op = userObjRepo.findByEmail(userObjDto.getEmail());
         if(op.isPresent()){
             throw  new EntityAlreadyExistException("User",userObjDto.getEmail());
@@ -50,7 +50,7 @@ public class AuthServiceImpl {
         UserObj userObj1 = userObjRepo.save(userObj);
 
 
-
+return userObj1;
 
 
     }
