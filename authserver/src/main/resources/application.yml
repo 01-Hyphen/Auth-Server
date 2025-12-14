@@ -37,12 +37,5 @@ spring:
 
 logging:
   level:
-    org:
-      springframework:
-
-        security: TRACE
-
-        cloud:
-          stream: TRACE
-          security: DEBUG
+    org.springframework.security: DEBUG
 

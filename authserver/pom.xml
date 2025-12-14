@@ -74,7 +74,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!-- ***************************************session invalidations ********************************************-->
+		<!-- ***************************************for oauth2 client********************************************-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+		</dependency>
+
+		<!-- ***************************************session invalidations ********************************************-->
 
 
 
